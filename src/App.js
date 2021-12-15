@@ -7,9 +7,16 @@ import Movies from "./components/Movies";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useState } from "react";
-//import StarIcon from "./components/StarIcon";
+import StarIcon from "./components/StarIcon";
 import { Button } from "reactstrap";
 import MovieList, { MovieCard } from "./components/MovieCard";
+import movies from "./components/Movies";
+
+import { Router } from "react-router-dom";
+import { Route } from "react-router-dom";
+import movieCard from "./components/MovieCard";
+import { Switch } from "react-router-dom";
+import Trailer from "./components/Trailer";
 
 function App() {
   const [searchMovieTitle, setSearchMovieTitle] = useState("");
@@ -23,16 +30,17 @@ function App() {
   const handleRatingFilter = (index) => {};
 
   return (
+    <Router>
     <>
       <div className="App">
         <div className="header-items">
-          <Rating />
+        <Rating />
           <filter />
 
-          <Button variant="primary" onClick={handleShow} id="add-button">
+          {/*Button variant="primary" onClick={handleShow} id="add-button">
             <span style={{ fontSize: "25px", color: "green" }}> + </span> Add
             Movie
-          </Button>
+  </Button */}
         </div>
         <div>
           <h2>Star Movie App</h2>
@@ -44,7 +52,9 @@ function App() {
       </div>
 
       <AddMovieModal show={show} setShow={setShow} addMovie={addMovie} />
+      <Trailer />
     </>
+    </Router>
   );
 }
 export default App;

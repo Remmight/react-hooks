@@ -1,4 +1,10 @@
-{props.movies.map((movie, index, rating, year) => (
+import React from "react";
+import { Card } from "reactstrap";
+import Rating from "./Rating";
+import MovieList from "./MovieList";
+
+const filter = (props) => {
+{props.movies.map((movie, _index, _rating, _year) => (
   <Card style={{ width: "20rem" }}>
     <Card.Img variant="top" src={movie.PosterURL} />
     <Card.Body>
@@ -13,7 +19,5 @@
     
         </Card>
       ))}
-    </>
-  );
-};
+}
 export default MovieList;

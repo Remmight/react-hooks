@@ -1,9 +1,12 @@
 import React from "react";
-import { Card } from "reactstrap";
+//import { Card } from "reactstrap";
 //import { propTypes } from "react-bootstrap/esm/Image";
 import Rating from "./Rating";
+//import filter from "./filter";
+import MovieList from "./MovieList";
+import Movies from "./Movies";
 
-const MovieList = (props) => {
+/*const MovieList = (props) => {
   return (
     <>
       {props.movies.map((movie, index, rating, year) => (
@@ -24,4 +27,18 @@ const MovieList = (props) => {
     </>
   );
 };
-export default MovieList;
+export default MovieList;*/
+
+function MovieCard() {
+  return (
+    <div>
+      <Rating />
+      <filter />
+      <div>
+        <MovieList movies={Movies} moviesArray={Movies} />
+      </div>
+    </div>
+  );
+}
+
+export default MovieCard;

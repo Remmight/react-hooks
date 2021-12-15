@@ -1,4 +1,4 @@
-export const Movies = [
+ const Movies = [
   {
     Title: "Star Wars: Episode IV - A New Hope",
     Year: "1977",
