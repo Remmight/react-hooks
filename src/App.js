@@ -1,38 +1,50 @@
 //import logo from './logo.svg';
-import React, { useState, useEffect } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './App.css';
-import MovieList from './components/movieList';
+import "./App.css";
+import Rating from "./components/Rating";
+import AddMovieModal from "./components/AddMovieModal";
+import Movies from "./components/Movies";
+//import filter from "./components/filter";
 
-const App = () => {
-	const [movies, setMovies] = useState([        {
-            "Title": "Star Wars: Episode IV - A New Hope",
-            "Description": "1977",
-            "PosterURL": "https://m.media-amazon.com/images/M/MV5BNzVlY2MwMjktM2E4OS00Y2Y3LWE3ZjctYzhkZGM3YzA1ZWM2XkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg",
-            "Rating": "movie"
-        },
-        {
-            "Title": "Star Wars: Episode V - The Empire Strikes Back",
-            "Year": "1980",
-            "imdbID": "tt0080684",
-            "Type": "movie",
-            "Poster": "https://m.media-amazon.com/images/M/MV5BYmU1NDRjNDgtMzhiMi00NjZmLTg5NGItZDNiZjU5NTU4OTE0XkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg"
-        },
-        {
-            "Title": "Star Wars: Episode VI - Return of the Jedi",
-            "Year": "1983",
-            "imdbID": "tt0086190",
-            "Type": "movie",
-            "Poster": "https://m.media-amazon.com/images/M/MV5BOWZlMjFiYzgtMTUzNC00Y2IzLTk1NTMtZmNhMTczNTk0ODk1XkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_SX300.jpg"
-        }]);
-	
-        return (
-          <div className='container-fluid movie-app'>
-            <div className='row'>
-              <MovieList movies={movies} />
-            </div>
-          </div>
-        );
-      };
-      
-      export default App;
+import "bootstrap/dist/css/bootstrap.min.css";
+import { useState } from "react";
+//import StarIcon from "./components/StarIcon";
+import { Button } from "reactstrap";
+import MovieList, { MovieCard } from "./components/MovieCard";
+
+function App() {
+  const [searchMovieTitle, setSearchMovieTitle] = useState("");
+  const [movies, setMovies] = useState([...Movies]);
+
+  const addMovie = (newMovie) => setMovies([...movies, newMovie]);
+  const [show, setShow] = useState(false);
+
+  const handleShow = () => setShow(true);
+  const handleSearch = (query) => {};
+  const handleRatingFilter = (index) => {};
+
+  return (
+    <>
+      <div className="App">
+        <div className="header-items">
+          <Rating />
+          <filter />
+
+          <Button variant="primary" onClick={handleShow} id="add-button">
+            <span style={{ fontSize: "25px", color: "green" }}> + </span> Add
+            Movie
+          </Button>
+        </div>
+        <div>
+          <h2>Star Movie App</h2>
+        </div>
+        <div className="moviesArea">
+          {" "}
+          <MovieList movies={movies} moviesArray={searchMovieTitle} />
+        </div>
+      </div>
+
+      <AddMovieModal show={show} setShow={setShow} addMovie={addMovie} />
+    </>
+  );
+}
+export default App;
